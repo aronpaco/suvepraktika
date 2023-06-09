@@ -3,7 +3,7 @@ function extractQuestionAndAnswerOptionsFromCSV(csv, lineIndex) {
   var lines = csv.split("\n");
 
   if (lines.length > lineIndex) {
-    var cells = lines[lineIndex].split(",");
+    var cells = lines[lineIndex].split(";");
     if (cells.length >= 9) {
       var answerOptions = [];
       for (var i = 1; i < cells.length; i += 2) {
@@ -60,14 +60,19 @@ fetch('kysimused.csv')
 
           for (var i = 0; i < shuffledAnswerOptions.length; i++) {
             var label = document.createElement("label");
-            label.textContent = shuffledAnswerOptions[i];
+            var answerBox = document.createElement("div"); // Create a div for the answer box
+            answerBox.className = "answer-box"; // Add a CSS class to the answer box
+            answerBox.textContent = shuffledAnswerOptions[i]; // Set the answer text
 
             var radioButton = document.createElement("input");
             radioButton.type = "radio";
             radioButton.name = "selectedAnswer";
             radioButton.value = shuffledAnswerOptions[i];
+            console.log(radioButton.value);
 
             label.appendChild(radioButton);
+            label.appendChild(answerBox); // Append the answer box to the label
+
             answerOptionsDiv.appendChild(label);
           }
 
@@ -88,20 +93,9 @@ fetch('kysimused.csv')
       }
     }
 
-    function updateScore(selectedAnswer) {
-      // Update score based on the selected answer
-      var currentLine = csvLines[currentQuestionIndex].split(",");
-      var selectedAnswerIndex = currentLine.indexOf(selectedAnswer);
-      var scoreIndex = selectedAnswerIndex + 1; // Score index is right after the answer index
-      var scoreValue = parseInt(currentLine[scoreIndex]);
-      score += scoreValue;
-    }
-
-    function showFinalScore() {
-      var finalScoreMessage = "Final Score: " + score;
-      alert(finalScoreMessage);
-    }
+    // Rest of the code...
 
     // Start displaying the first question
     displayQuestion();
   });
+
