@@ -1,0 +1,107 @@
+.messageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    color: black;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    background-color: #6bcaba;
+    border: 1px solid #000000;
+    cursor: pointer;
+    width: 125px;
+    border-radius: 15px;
+}
+
+#like_feedback_button, #dislike_feedback_button {
+    background-color: #6bcaba;
+    border: 1px solid #000000;
+    cursor: pointer;
+    width: 75px;
+    border-radius: 15px;
+}
+
+input[type=button]:focus{
+    outline: 3px solid #000000;
+}
+  
+
+input, textarea {
+    height: 35px;
+    font-size: 20px;
+    width: 100%;
+}
+
+input[type=button]:hover{
+    background-color: #bce7e0;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #bce7e0;
+    cursor: pointer;
+}
+
+body, form, #main {
+    display: flex;
+    justify-content: column;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    flex-direction: column;
+    color: black;
+    background-color: #FFFFFF;
+}
+
+#feedback_buttons {
+    display: center;
+}
+
+textarea {
+    height: 250px;
+}
+
+text {
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+label {
+    font-size: 25px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+input::placeholder, textarea::placeholder {
+    font: 20px sans-serif;
+    padding: 10px;
+    color: #ccc;
+}
+
+input, textarea{
+    border-radius: 10px;
+}
+
+.submit_btn{
+    font-size: 20px;
+    
+}
+
+textarea {
+    max-height: 200px;
+    padding: 10px;
+    line-height: 1.5;
+  }
+
+.selected {
+    outline: 3px solid #000000;
+    background-color: #6bcaba;
+}
