@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tulemuste tabel</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <h1>Tulemuste tabel</h1>
+
+  <div id="filter">
+    <label for="from">Alates:</label>
+    <input type="date" id="from">
+    <label for="to">Kuni:</label>
+    <input type="date" id="to">
+    <button class="button" onclick="filterResults()">Filtreeri</button>
+    <button class="button" onclick="clearFilter()">Tühjenda</button>
+    <button class="button" id="csvButton" onclick="exportToCSV()">Export CSV</button>
+    <button class="button" id="excelButton" onclick="exportToExcel()">Export Excel</button>
+    <button class="button" id="logoutButton" onclick="logout()">Log Out</button>
+    <button class="button clicked" id="statisticsButton" onclick="window.location.href='statistika.html'">Statistika</button>
+    <button class="button" id="feedbackButton" onclick="window.location.href='tagasiside.html'">Tagasiside</button>
+    <button id="logoutButton" onclick="logout()">Log Out</button>
+  </div>
+
+  <table id="resultsTable">
+    <thead>
+      <tr>
+        <th data-type="date">Kuupäev <span class="clickable" onclick="sortTable(0, 'asc')">&#x25B2;</span><span onclick="sortTable(0, 'desc')">&#x25BC;</span></th>
+        <th>Eesnimi <span class="clickable" onclick="sortTable(1, 'asc')">&#x25B2;</span><span onclick="sortTable(1, 'desc')">&#x25BC;</span></th>
+        <th>Perekonnanimi <span class="clickable" onclick="sortTable(2, 'asc')">&#x25B2;</span><span onclick="sortTable(2, 'desc')">&#x25BC;</span></th>
+        <th>Küsimus <span class="clickable" onclick="sortTable(3, 'asc')">&#x25B2;</span><span onclick="sortTable(3, 'desc')">&#x25BC;</span></th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- Data will be populated here dynamically -->
+    </tbody>
+  </table>
+
+  <script src="script.js"></script>
+  <script>
+    fetch('data.csv')
+      .then(response => response.text())
+      .then(data => {
+        const table = document.getElementById('tableBody');
+        const rows = data.split('\n');
+        rows.forEach(row => {
+          const cols = row.split(',');
+          const tr = document.createElement('tr');
+          cols.forEach(col => {
+            const td = document.createElement('td');
+            td.textContent = col;
+            tr.appendChild(td);
+          });
+          table.appendChild(tr);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+</body>

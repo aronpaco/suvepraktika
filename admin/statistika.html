@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tulemuste tabel</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
+</head>
+<body>
+  <h1>Tulemuste tabel</h1>
+
+  <div id="filter">
+    <label for="from">Alates:</label>
+    <input type="date" id="from">
+    <label for="to">Kuni:</label>
+    <input type="date" id="to">
+    <button onclick="filterResults()">Filtreeri</button>
+    <button onclick="clearFilter()">Tühjenda</button>
+    <button id="csvButton" onclick="exportToCSV()">Export CSV</button>
+    <button id="excelButton" onclick="exportToExcel()">Export Excel</button>
+    <button class="button clicked" id="statisticsButton" onclick="window.location.href='statistika.html'">Statistika</button>
+    <button class="button" id="feedbackButton" onclick="window.location.href='tagasiside.html'">Tagasiside</button>
+    <button id="logoutButton" onclick="logout()">Log Out</button>
+
+
+  </div>
+
+  <table id="resultsTable">
+    <thead>
+      <tr>
+        
+        <th data-type="date">
+          Kuupäev
+          <span class="clickable" onclick="sortTable(0, 'asc')">&#x25B2;</span>
+          <span onclick="sortTable(0, 'desc')">&#x25BC;</span>
+        </th>
+        <th>Eesnimi <span class="clickable" onclick="sortTable(1, 'asc')">&#x25B2;</span><span onclick="sortTable(1, 'desc')">&#x25BC;</span></th>
+        <th>Perekonnanimi <span class="clickable" onclick="sortTable(2, 'asc')">&#x25B2;</span><span onclick="sortTable(2, 'desc')">&#x25BC;</span></th>
+        <th>IP aadress <span class="clickable" onclick="sortTable(3, 'asc')">&#x25B2;</span><span onclick="sortTable(3, 'desc')">&#x25BC;</span></th>
+        <th>Õiged vastused <span class="clickable" onclick="sortTable(4, 'asc')">&#x25B2;</span><span onclick="sortTable(4, 'desc')">&#x25BC;</span></th>
+        <th>Valed vastused <span class="clickable" onclick="sortTable(5, 'asc')">&#x25B2;</span><span onclick="sortTable(5, 'desc')">&#x25BC;</span></th>
+        <th>Lõppskoor <span class="clickable" onclick="sortTable(6, 'asc')">&#x25B2;</span><span onclick="sortTable(6, 'desc')">&#x25BC;</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2023-05-10</td>
+        <td>John</td>
+        <td>Doe</td>
+        <td>192.168.0.1</td>
+        <td>8</td>
+        <td>2</td>
+        <td>80%</td>
+      </tr>
+      <tr>
+        <td>2023-04-03</td>
+        <td>Jane</td>
+        <td>Smith</td>
+        <td>192.168.0.2</td>
+        <td>7</td>
+        <td>3</td>
+        <td>70%</td>
+      </tr>
+      <tr>
+        <td>2023-03-10</td>
+        <td>Jan</td>
+        <td>Smit</td>
+        <td>192.168.0.3</td>
+        <td>1</td>
+        <td>6</td>
+        <td>10%</td>
+      </tr>
+      <!-- Lisage siia veel rohkem tulemuste ridu -->
+    </tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>

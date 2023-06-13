@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tagasiside vaade</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
+</head>
+<body>
+  <h1>Tagasiside</h1>
+
+  <div id="filter">
+    <label for="from">Alates:</label>
+    <input type="date" id="from">
+    <label for="to">Kuni:</label>
+    <input type="date" id="to">
+    <button onclick="filterResults()">Filtreeri</button>
+    <button onclick="clearFilter()">Tühjenda</button>
+    <button id="csvButton" onclick="exportToCSV()">Export CSV</button>
+    <button id="excelButton" onclick="exportToExcel()">Export Excel</button>
+    <button class="button" id="statisticsButton" onclick="window.location.href='statistika.html'">Statistika</button>
+    <button class="button clicked" id="feedbackButton" onclick="window.location.href='tagasiside.html'">Tagasiside</button>
+    <button id="logoutButton" onclick="logout()">Log Out</button>
+
+
+  </div>
+
+  <table id="resultsTable">
+    <thead>
+      <tr>
+        <th data-type="date">
+          Kuupäev <br>
+          <span class="clickable" onclick="sortTable(0, 'asc')">&#x25B2;</span>
+          <span onclick="sortTable(0, 'desc')">&#x25BC;</span>
+        </th>
+        <th>Eesnimi <span class="clickable" onclick="sortTable(1, 'asc')">&#x25B2;</span><span onclick="sortTable(1, 'desc')">&#x25BC;</span></th>
+        <th>Perekonnanimi <span class="clickable" onclick="sortTable(2, 'asc')">&#x25B2;</span><span onclick="sortTable(2, 'desc')">&#x25BC;</span></th>
+        <th>Tagasiside <span class="clickable" onclick="sortTable(4, 'asc')">&#x25B2;</span><span onclick="sortTable(4, 'desc')">&#x25BC;</span></th>
+        <th>Email <span class="clickable" onclick="sortTable(5, 'asc')">&#x25B2;</span><span onclick="sortTable(5, 'desc')">&#x25BC;</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2023-05-10</td>
+        <td>John</td>
+        <td>Doe</td>
+        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est vero, debitis eius provident cupiditate repellat illo alias molestiae! Vel at dolore ullam totam animi minima officia voluptatibus dolores! Magni, alias!</td>
+        <td>john.doe@gmail.com</td>
+      </tr>
+      <tr>
+        <td>2023-04-03</td>
+        <td>Jane</td>
+        <td>Smith</td>
+
+        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi quibusdam, alias ex eum dolorum ratione quod aliquid, repellendus tempore culpa quasi, mollitia omnis voluptatum hic quidem optio est dolore nemo!</td>
+        <td>jane.smith@gmail.com</td>
+      </tr>
+      <tr>
+        <td>2023-03-10</td>
+        <td>Jan</td>
+        <td>Smit</td>
+        <td>Pole küsimusi</td>
+      </tr>
+      <tr>
+        <td>2023-03-10</td>
+        <td>Janee</td>
+        <td>Smit</td>
+        <td>Pole küsimusi</td>
+      </tr>
+      <tr>
+        <td>2023-05-29</td>
+        <td>Janee</td>
+        <td>Smit</td>
+        <td>Eksami test</td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
