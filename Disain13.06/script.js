@@ -43,13 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
           if (selectedAnswer) {
             const scoreValue = selectedAnswer.dataset.score;
             score += parseInt(scoreValue);
-  
             const nextQuestionIndex = parseInt(selectedAnswer.dataset.nextquestion);
             if (nextQuestionIndex >= 0) {
               currentQuestionIndex = nextQuestionIndex;
               displayNextQuestion();
+              console.log(nextQuestionIndex);
             } else {
               showEndScreen();
+              console.log(nextQuestionIndex + " end");
             }
           }
         });
@@ -96,10 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Function to find the index of the next question
         function findQuestionIndex(currentIndex) {
           const currentQuestion = csvData[currentIndex];
-  
+          console.log("currentIndex: " + currentIndex)
           for (let i = 1; i <= 4; i++) {
             const nextQuestion = currentQuestion[`NextQuestion${i}`].trim();
-  
+            console.log("currentQuestion: " + currentIndex)
             if (nextQuestion !== '') {
               const nextIndex = csvData.findIndex(question => question['QuestionNumber'].trim() === nextQuestion);
   
@@ -159,7 +160,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
         // Function to calculate the end score
         function calculateEndScore() {
+          const age = parseInt(playerData.age);
+          const education = parseInt(playerData.education);
+          const job = parseInt(playerData.job);
+  
           let endScore = score;
+
+  
           return endScore;
         }
       });
