@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Intervjuu</title>
+  <link rel="stylesheet" type="text/css" href="style_disain.css">
+</head>
+<body>
+  <div class="container">
+    <div id="start-section">
+      
+      <label for="name">Name:</label>
+      <input type="text" id="name" >
+
+      <label for="education">Education:</label>
+      <input type="text" id="education" >
+
+      <label for="profession">Profession:</label>
+      <input type="text" id="profession" >
+
+      <label for="hobbies">Hobbies:</label>
+      <input type="text" id="hobbies" >
+
+      
+
+      <button id="start-btn">Start</button>
+
+      <a href="../Avaleht/avaleht.php" class="button">back</a>
+    </div>
+    
+
+    <div id="question-section" style="display: none;">
+      <h2 id="question"></h2>
+      <div id="answer-buttons"></div>
+      <button id="next-btn" disabled>Next Question</button>
+    </div>
+
+    <div id="end-section" style="display: none;">
+      <h2 id="end-title"></h2>
+      <p id="end-score"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
