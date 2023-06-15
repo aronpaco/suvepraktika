@@ -1,0 +1,32 @@
+#main, #buttonContainer, #textContainer, #technicalContainer {
+    display: flex;
+    justify-content: column;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    background-color: rgb(255, 245, 235);
+}
+
+
+.feedbackContainer {
+    display: flex;
+    justify-content: column;
+    align-items: center;
+    flex-direction: column;
+}
+
+button, input, select, textarea {
+    width: 25%;
+    height: 40px;
+    margin: 10px;
+}
+
+button {
+    background-color: bisque;
+    font: bold;
+}
+button:hover {
+    cursor: pointer;
+    background-color: rgb(255, 184, 96);
+}
+
