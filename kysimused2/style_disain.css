@@ -16,17 +16,26 @@ body {
     justify-content: center; 
   }
   
-  #video-container, #intro-section{
-	position:absolute;
-	top: 40px;
+  #video-container {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 800px; 
+    height: 400px; 
   }
+
   
+
   h1, h2 {
     text-align: center;
     margin-bottom: 20px;
   }
   
   #start-section {
+    position: absolute;
+    top: 120px;
     text-align: center;
   }
   
@@ -35,7 +44,52 @@ body {
   #start-section input,
   #start-section button {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    
+  }
+  
+  .end-button {
+    font-size: 0.9vw;
+    width: 21vw; /* Fixed width */
+    height: 4.5vw; /* Fixed height */
+    border-radius: 30px;
+    background-color: rgba(107, 201, 186, 0.84);
+    color: #000;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;    
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .feedback-button {
+    font-size: 0.9vw;
+    width: 21vw; /* Fixed width */
+    height: 4.5vw; /* Fixed height */
+    border-radius: 30px;
+    background-color: rgba(107, 201, 186, 0.84);
+    color: #000;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;    
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .end-title {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
   }
   
   
@@ -59,7 +113,7 @@ body {
   
 .question-container {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -137,7 +191,7 @@ body {
   margin: auto;
   margin-top: 1vh;
   padding: 1vh 2vw;
-  background-color: lightblue;
+  background-color: rgba(107, 201, 186, 0.84);
   border-radius: 20px;
   font-size: 1.0vw;
   cursor: pointer;
@@ -146,15 +200,15 @@ body {
 }
   
 #next-btn:disabled, #start-btn:disabled {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(107, 201, 186, 0.84);
   cursor: not-allowed;
 }
 
 
-#video-container {
+/*#video-container {
   position: relative;
   display: inline-block;
-}
+}*/
 
 #default-video {
   display: block;

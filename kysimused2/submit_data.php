@@ -44,6 +44,7 @@ if ($mysqli->connect_error) {
 $score = $_POST['score'];
 $correctAnswers = $_POST['correctAnswers'];
 $inCorrectAnswers = $_POST['inCorrectAnswers'];
+$saveCurrentQuestionIndex = $_POST['saveCurrentQuestionIndex'];
 
 // Connect to the database and perform the necessary operations
 // ...
@@ -53,23 +54,24 @@ $query = "SELECT COUNT(*) FROM skoorid WHERE kasutaja_id = '" . $_SESSION['kasut
 $result = mysqli_query($mysqli, $query);
 $row = mysqli_fetch_row($result);
 $count = $row[0];
+echo $count; 
 
-
-echo 'enne iffi: ';
+echo '\n enne iffi: ';
 echo $correctAnswers;
 echo 'enne iffi: ';
 echo $inCorrectAnswers;
 // Prepare the SQL statement based on the kasutaja_id existence
-if ($correctAnswers == 1 || $inCorrectAnswers == 1 && $count == 0) {
+if ($count == 0) {
   // Create a new row
-  $sql = "INSERT INTO skoorid (score, kasutaja_id, oigesti, valesti) VALUES ('$score', '" . $_SESSION['kasutaja_id'] . "', '$correctAnswers', '$inCorrectAnswers')";
+  $sql = "INSERT INTO skoorid (score, kasutaja_id, oigesti, valesti, viimane_kysimus) VALUES ('$score', '" . $_SESSION['kasutaja_id'] . "', '$correctAnswers', '$inCorrectAnswers', '$saveCurrentQuestionIndex')";
   echo 'First row created';
 } else {
   // Update the existing row
-  $sql = "UPDATE skoorid SET score = '$score', oigesti = '$correctAnswers', valesti = '$inCorrectAnswers' WHERE kasutaja_id = '" . $_SESSION['kasutaja_id'] . "'";
+  $sql = "UPDATE skoorid SET score = '$score', oigesti = '$correctAnswers', valesti = '$inCorrectAnswers', viimane_kysimus = '$saveCurrentQuestionIndex' WHERE kasutaja_id = '" . $_SESSION['kasutaja_id'] . "'";
   echo 'Row updated';
   echo $correctAnswers;
   echo $inCorrectAnswers;
+  echo $saveCurrentQuestionIndex;
 }
 
 

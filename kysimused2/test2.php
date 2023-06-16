@@ -1,6 +1,30 @@
 <?php
 session_start();
 echo $_SESSION['kasutaja_id'];
+
+$csvData = file_get_contents('temp.csv');
+$rows = explode("\n", $csvData);
+$maxScore = 0;
+
+// Iterate over each row (starting from index 1 to skip the header row)
+for ($i = 1; $i < count($rows); $i++) {
+    // Split the row into columns
+    $columns = explode(";", $rows[$i]);
+    
+    $largestScore = 0;
+    
+    for ($j = 3; $j < count($columns); $j += 3) {
+      $score = intval($columns[$j]);
+      if ($score > $largestScore) {
+        $largestScore = $score;
+      }
+    }
+    
+    $maxScore += $largestScore;
+  }
+
+echo '<script>const maxScore = ' . $maxScore . ';</script>';
+
 ?>
 
 

@@ -16,10 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const endTitleElement = document.getElementById('end-title');
     const endScoreElement = document.getElementById('end-score');
   
-    let currentQuestionIndex = 0;
     let score = 0;
     let correctAnswers = 0;
     let inCorrectAnswers = 0;
+    let lastQuestion = 0;
+    let currentQuestionIndex = 0;
+    let saveCurrentQuestionIndex = 0;
 
   
     let playerData = {};
@@ -45,7 +47,40 @@ document.addEventListener('DOMContentLoaded', function() {
           startSection.style.display = 'none';
           questionSection.style.display = 'block';
 		      displayNextQuestion();
+          startTimer();
         });
+
+
+
+
+
+
+
+
+        let timerId; // variable to store the timer ID
+        let seconds = 0; // variable to store the number of seconds
+
+        function startTimer() {
+          // Display the initial value
+          // console.log(seconds);
+
+          // Start the timer and store the timer ID
+          timerId = setInterval(function () {
+            seconds++;
+            // console.log(seconds);
+          }, 1000);
+        }
+
+        function stopTimer() {
+          // Clear the interval using the timer ID
+          clearInterval(timerId);
+
+          // Log the final value of seconds
+          console.log("Timer stopped. Seconds: " + seconds);
+        }
+
+
+
   
         /*// Event listener for the start button
         document.getElementById('intro-btn').addEventListener('click', () => {
@@ -86,6 +121,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (nextQuestionIndex >= 0) {
               currentQuestionIndex = nextQuestionIndex;
+              console.log("currentQuestionIndex: " + currentQuestionIndex);
+              saveCurrentQuestionIndex = currentQuestionIndex;
+              console.log(saveCurrentQuestionIndex + " current");
               displayNextQuestion();
               calculateEndScore();
             } else {
@@ -192,18 +230,22 @@ document.addEventListener('DOMContentLoaded', function() {
           let endTitle = '';
           let retryButton = document.createElement('button');
           let feedbackButton = document.createElement('button');
+          
+          console.log("max " + maxScore);
 
-          const percentage = endScore;
-
-          if (endScore <= 30) {
-            endTitle = 'Kahjuks kukkusid läbi, sinu punktiskoor oli ' + percentage.toFixed(2) + '%';
-          } else if (endScore <= 60) {
-            endTitle = 'Said intervjuust läbi, sinu punktiskoor oli ' + percentage.toFixed(2) + '%';
+          if (endScore <= 15) {
+            endTitle = 'Kahjuks kukkusid läbi, sinu punktiskoor oli ' + endScore + ' / ' + maxScore + ' punktist';
+          } else if (endScore > 15) {
+            endTitle = 'Said intervjuust läbi, sinu punktiskoor oli ' + endScore + ' / ' + maxScore + ' punktist';
           } else {
             endTitle = 'Title C';
           }
 
           endTitleElement.innerText = endTitle;
+          endTitleElement.classList.add('end-title');
+
+          endTitleElement.innerText = endTitle;
+          endTitleElement.classList.add('end-title');
 
           retryButton.innerText = 'Sooritan uuesti';
           retryButton.addEventListener('click', function() {
@@ -228,14 +270,14 @@ document.addEventListener('DOMContentLoaded', function() {
           let endScore = score;
           let finalCorrectAnswers = correctAnswers;
   
-          submitEndScore(score, correctAnswers, inCorrectAnswers);
+          submitEndScore(score, correctAnswers, inCorrectAnswers, saveCurrentQuestionIndex);
           return endScore;
           return finalCorrectAnswers;
   
   
         }
   
-        function submitEndScore(score, correctAnswers, inCorrectAnswers) {
+        function submitEndScore(score, correctAnswers, inCorrectAnswers, saveCurrentQuestionIndex) {
           // Create an XMLHttpRequest object
           var xhr = new XMLHttpRequest();
         
@@ -245,6 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
           data.append('score', score);
           data.append('correctAnswers', correctAnswers);
           data.append('inCorrectAnswers', inCorrectAnswers);
+          data.append('saveCurrentQuestionIndex', saveCurrentQuestionIndex);
         
           // Set up the AJAX request
           xhr.open('POST', 'submit_data.php', true);
@@ -265,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
           console.log("Correct answers that were sent to the database: " + correctAnswers);
           console.log("Incorrect answers that were sent to the database: " + inCorrectAnswers);
           console.log("Score that was sent to the database: " + score);
+          console.log("saveCurrentQuestionIndex that was sent to the database: " + saveCurrentQuestionIndex);
         }
 
           /*uuendame vastamta küsimusi*/
