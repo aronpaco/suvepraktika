@@ -1,0 +1,179 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('geometric.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+#filter {
+  margin-bottom: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto; /* Center the table horizontally */
+  width: 95%; /* Adjust the value as per your preference */
+  max-width: 1700px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 50px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px #000;
+  font-size: 0.7vw; /* Adjust the value as per your preference */
+}
+
+table th,
+table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+button, .pagination-button, .pagination {
+  margin-left: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  background-color: rgba(107, 201, 186, 0.84);
+  border-radius: 30px;
+  transition-duration: 0.3s;
+  color: white;
+  border: none;
+}
+
+button:hover {
+  background-color: rgba(51, 120, 110, 0.95);
+  color: black;
+}
+
+#logoutButton {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.wrap-cell {
+  word-wrap: break-word;
+}
+/*
+#feedbackButton {
+  position: absolute;
+  top: 120px;
+  left: 165px;
+  padding: 12px 20px;
+  margin: 5px;
+  border: 1px solid #000;
+  cursor: pointer;
+  width: 125px;
+  border-radius: 30px;
+  transition-duration: 0.3s;
+  background-color: rgba(107, 201, 186, 0.84);
+  color: white;
+}
+
+#feedbackButton:hover {
+  background-color: rgba(51, 120, 110, 0.95);
+  color: black;
+}
+
+#statisticsButton {
+  position: absolute;
+  top: 120px;
+  left: 30px;
+  padding: 12px 20px;
+  margin: 5px;
+  border: 1px solid #000;
+  cursor: pointer;
+  width: 125px;
+  border-radius: 30px;
+  transition-duration: 0.3s;
+  background-color: rgba(107, 201, 186, 0.84);
+  color: white;
+}
+
+#statisticsButton:hover {
+  background-color: rgba(51, 120, 110, 0.95);
+  color: black;
+}
+*/
+.clicked {
+  background-color: rgba(51, 120, 110, 0.95);
+}
+
+.notClicked {
+  background-color: rgba(107, 201, 186, 0.84);
+}
+
+#csvButton {
+  position: absolute;
+  right: 20px;
+}
+
+#excelButton {
+  position: absolute;
+  right: 150px;
+}
+
+#textBox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterButton {
+  margin-left: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  background-color: rgba(71, 71, 71, 0.84);
+  transition-duration: 0.3s;
+  color: white;
+  border: none;
+}
+
+.filterButton:hover {
+  background-color: rgba(141, 141, 141, 0.95);
+  color: black;
+}
+
+#statisticsButton, #feedbackButton {
+  position: absolute;
+  top: 10px;
+  margin-left: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  background-color: rgba(107, 201, 186, 0.84);
+  border-radius: 30px;
+  transition-duration: 0.3s;
+  color: white;
+  border: none;
+}
+
+#statisticsButton {
+  left: 10px;
+}
+
+#feedbackButton {
+  left: 120px; /* Adjust the value as per your desired spacing */
+}
+
+#statisticsButton:hover, #feedbackButton:hover {
+  background-color: rgba(51, 120, 110, 0.95);
+  color: black;
+}
+
+.clickable {
+  cursor: pointer;
+}
