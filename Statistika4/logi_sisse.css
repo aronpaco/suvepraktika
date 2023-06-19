@@ -1,0 +1,70 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('geometric.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px 0px #000;
+    width: 50%;
+    max-width: 350px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    background: #ebebeb;
+    border-radius: 30px;
+}
+
+input[type="submit"] {
+    background-color: rgba(107, 201, 186, 0.84);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    width: 50%;
+    border-radius: 30px;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(51, 120, 110, 0.95);
+}
+
+strong {
+    color: #ff0000;
+}
+
+#pagination {
+    margin-block: 50px;
+}
